@@ -34,3 +34,9 @@ C:\Users\IvanBaños\annualsalarycalc\annualsalarycalcBL\annualsalarycalc.Tests\o
 C:\Users\IvanBaños\annualsalarycalc\annualsalarycalcBL\annualsalarycalc.Tests\obj\Debug\annualsalarycalcApi.Tests.csproj.CopyComplete
 C:\Users\IvanBaños\annualsalarycalc\annualsalarycalcBL\annualsalarycalc.Tests\obj\Debug\InsurranceApi.Tests.dll
 C:\Users\IvanBaños\annualsalarycalc\annualsalarycalcBL\annualsalarycalc.Tests\obj\Debug\InsurranceApi.Tests.pdb
+C:\Users\IvanBaños\annualsalarycalc\annualsalarycalcBL\annualsalarycalc.Tests\bin\Debug\ApplicationInsights.config
+C:\Users\IvanBaños\annualsalarycalc\annualsalarycalcBL\annualsalarycalc.Tests\bin\Debug\annualsalarycalcBL.dll
+C:\Users\IvanBaños\annualsalarycalc\annualsalarycalcBL\annualsalarycalc.Tests\bin\Debug\System.Web.Optimization.dll
+C:\Users\IvanBaños\annualsalarycalc\annualsalarycalcBL\annualsalarycalc.Tests\bin\Debug\annualsalarycalcBL.pdb
+C:\Users\IvanBaños\annualsalarycalc\annualsalarycalcBL\annualsalarycalc.Tests\bin\Debug\annualsalarycalcBL.dll.config
+C:\Users\IvanBaños\annualsalarycalc\annualsalarycalcBL\annualsalarycalc.Tests\bin\Debug\System.Web.Optimization.xml

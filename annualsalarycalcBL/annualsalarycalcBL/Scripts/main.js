@@ -2,7 +2,6 @@
     $(function () {
         getEmployees();
     });
-
     function getEmployees() {
         var getEmployees = $('.getEmployees');
         getEmployees.on('click touchend', function () {
@@ -31,17 +30,18 @@
                         $.each(data[0], function (index, value) {
                             html += '<th>' + index + '</th>';
                         });
-                        html += '</tr></tfoot>';
+                        html += '</tr></tfoot><tbody>';
                         $.each(data, function (index, value) {
                             html += '<tr>';
                             html += '<td>' + value.salary + '</td>';
                             html += '<td>' + value.id + '</td>';
                             html += '<td>' + value.name + '</td>';
                             html += '<td>' + value.role.name + '</td>';
-                            html += '<tr>';
+                            html += '</tr>';
                         });
-                        html += '</table>';
+                        html += '</tbody></table>';
                         $('.data').html(html);
+                        $(".dataTable").DataTable();
                     } else {
                         var html = '<ul>';
                          html += '<li><strong>salary</strong>: '+data.salary+'</li>';
@@ -50,7 +50,8 @@
                         html += '<li><strong>Role</strong>: ' + data.role.name +'</li>';
                          html += '</ul >';
 
-                            $('.data').html(html);
+                        $('.data').html(html, function () {
+                        })
                     }
                 },
                 error: function () {
