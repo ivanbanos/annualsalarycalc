@@ -15,8 +15,8 @@ namespace IBDLocal.DataAccess
     {
         public Data executeRequest(string name, List<Parameter> parameters, string connectionString)
         {
-            string parametros = "";
-            foreach (Parameter p in parameters)
+            var parametros = "";
+            foreach (var p in parameters)
             {
                 if (p.localizacion == 2)
                 {
@@ -24,15 +24,15 @@ namespace IBDLocal.DataAccess
                 }
             }
 
-            Uri uri = new Uri(connectionString + name + "/" + (parametros.Length > 0 ? parametros.Substring(0, parametros.Length - 1) : ""));
-            
+            var uri = new Uri(connectionString + name + "/" + (parametros.Length > 0 ? parametros.Substring(0, parametros.Length - 1) : ""));
 
-            HttpWebRequest http = (HttpWebRequest)HttpWebRequest.Create(uri);
+
+            var http = (HttpWebRequest)HttpWebRequest.Create(uri);
             var byteArray = new UTF8Encoding().GetBytes(ConfigurationManager.AppSettings["UserSICOM"] + ":" + ConfigurationManager.AppSettings["PasswordSICOM"]);
             http.Method = "POST";
             if (ConfigurationManager.AppSettings["ApiCredentials"] == "True")
             {
-                System.Net.CredentialCache credentialCache = new System.Net.CredentialCache();
+                var credentialCache = new System.Net.CredentialCache();
                 credentialCache.Add(
                     uri,
                     "Basic",
@@ -45,7 +45,7 @@ namespace IBDLocal.DataAccess
 
             
             http.ContentType = "application/json; charset=utf-8";
-            foreach (Parameter p in parameters)
+            foreach (var p in parameters)
             {
                 if (p.localizacion == 1)
                 {
@@ -65,15 +65,15 @@ namespace IBDLocal.DataAccess
             }
             try
             {
-                HttpWebResponse response = (HttpWebResponse)http.GetResponse();
+                var response = (HttpWebResponse)http.GetResponse();
                 if (response.StatusCode == HttpStatusCode.OK || response.StatusCode == HttpStatusCode.Created)
                 {
-                    Data Data = new Data();
-                    using (StreamReader sr = new StreamReader(response.GetResponseStream()))
+                    var Data = new Data();
+                    using (var sr = new StreamReader(response.GetResponseStream()))
                     {
-                        string responseJson = sr.ReadToEnd();
+                        var responseJson = sr.ReadToEnd();
 
-                        JObject jObj = JObject.Parse(responseJson);
+                        var jObj = JObject.Parse(responseJson);
                         return DataBuilder.getData(jObj);
                     }
 
@@ -81,7 +81,7 @@ namespace IBDLocal.DataAccess
                 else
                 {
 
-                    JObject jObj = JObject.Parse("{\"estado\":\""+ response.StatusDescription + "\"}");
+                    var jObj = JObject.Parse("{\"estado\":\""+ response.StatusDescription + "\"}");
                     return DataBuilder.getData(jObj);
                 }
             }

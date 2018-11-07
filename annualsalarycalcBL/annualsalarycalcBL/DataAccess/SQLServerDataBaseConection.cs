@@ -16,12 +16,12 @@ namespace IBDLocal.DataAccess
                 try
                 {
                     conexion.ConnectionString = connectionString;
-                    SqlCommand cmd = new SqlCommand(name, conexion);
+                    var cmd = new SqlCommand(name, conexion);
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    foreach (Parameter p in parameters)
+                    foreach (var p in parameters)
                     {
-                        SqlParameter p1 = new SqlParameter(string.Format("{0}{1}", "@", p.nombre)
+                        var p1 = new SqlParameter(string.Format("{0}{1}", "@", p.nombre)
                                                           , p.valor);
                         p1.Direction = ParameterDirection.Input;
 
@@ -30,7 +30,7 @@ namespace IBDLocal.DataAccess
 
 
                     conexion.Open();
-                    SqlDataReader reader = cmd.ExecuteReader();
+                    var reader = cmd.ExecuteReader();
 
                     return DataBuilder.getData(reader);
                 }

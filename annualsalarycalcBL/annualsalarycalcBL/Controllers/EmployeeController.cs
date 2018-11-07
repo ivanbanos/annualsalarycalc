@@ -18,7 +18,7 @@ namespace annualsalarycalcBL.Controllers
         
         public EmployeeDTO Get(int id)
         {
-            EmployeeDTO employee= BussinessLogicComsumer.getInstance().facade.getEmployee(id);
+            var employee= BussinessLogicComsumer.getInstance().facade.getEmployee(id);
             if (employee.id != 0)
             {
                 return employee;

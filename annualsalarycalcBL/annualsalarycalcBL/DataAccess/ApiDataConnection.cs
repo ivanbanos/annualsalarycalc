@@ -13,23 +13,23 @@ namespace IBDLocal.DataAccess
     {
         public Data executeRequest(string name, List<Parameter> parameters, string connectionString)
         {
-            string parametros = "";
-            foreach (Parameter p in parameters) {
+            var parametros = "";
+            foreach (var p in parameters) {
                 if (p.localizacion == 2)
                 {
                     parametros += p.valor + ",";
                 }
             }
 
-            Uri uri = new Uri(connectionString  + name + "/" + (parametros.Length > 0 ? parametros.Substring(0, parametros.Length - 1) : ""));
-            
+            var uri = new Uri(connectionString  + name + "/" + (parametros.Length > 0 ? parametros.Substring(0, parametros.Length - 1) : ""));
 
-            HttpWebRequest http = (HttpWebRequest)HttpWebRequest.Create(uri);
+
+            var http = (HttpWebRequest)HttpWebRequest.Create(uri);
             var byteArray = new UTF8Encoding().GetBytes(ConfigurationManager.AppSettings["UserSICOM"]+":"+ ConfigurationManager.AppSettings["PasswordSICOM"]);
 
             if (ConfigurationManager.AppSettings["ApiCredentials"] == "True")
             {
-                System.Net.CredentialCache credentialCache = new System.Net.CredentialCache();
+                var credentialCache = new System.Net.CredentialCache();
                 credentialCache.Add(
                     uri,
                     "Basic",
@@ -41,7 +41,7 @@ namespace IBDLocal.DataAccess
 
             
             http.ContentType = "application/json; charset=utf-8";
-            foreach (Parameter p in parameters)
+            foreach (var p in parameters)
             {
                 if (p.localizacion==1)
                 {
@@ -54,17 +54,17 @@ namespace IBDLocal.DataAccess
             {
                 HttpWebResponse response = (HttpWebResponse)http.GetResponse();
                 
-                    Data Data = new Data();
-                    using (StreamReader sr = new StreamReader(response.GetResponseStream()))
+                    var Data = new Data();
+                    using (var sr = new StreamReader(response.GetResponseStream()))
                     {
-                        string responseJson = sr.ReadToEnd();
+                        var responseJson = sr.ReadToEnd();
                     try
                     {
-                        JObject jObj = JObject.Parse(responseJson);
+                        var jObj = JObject.Parse(responseJson);
                         return DataBuilder.getData(jObj);
                     }
                     catch (Exception) {
-                        JArray jObj = JArray.Parse(responseJson);
+                        var jObj = JArray.Parse(responseJson);
                         return DataBuilder.getData(jObj);
                     }
                     }
@@ -75,7 +75,7 @@ namespace IBDLocal.DataAccess
             {
 
 
-                JObject jObj = JObject.Parse("{\"estado\":\"error\"}");
+                var jObj = JObject.Parse("{\"estado\":\"error\"}");
                 return DataBuilder.getData(jObj);
             }
         }

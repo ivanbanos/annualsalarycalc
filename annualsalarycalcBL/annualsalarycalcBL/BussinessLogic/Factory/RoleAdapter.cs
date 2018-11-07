@@ -11,10 +11,13 @@ namespace annualsalarycalcBL.BussinessLogic.Factory
     {
         public DTO create(Data data, int pos)
         {
-            RoleDTO obj = new RoleDTO();
-            obj.id = data.getDato(pos).getIntField("roleId");
-            obj.name = data.getDato(pos).getStringField("roleName");
-            obj.description = data.getDato(pos).getStringField("roleDescription");
+
+            var obj = new RoleDTO
+            {
+                id = data.getDato(pos).getIntField("roleId"),
+                name = data.getDato(pos).getStringField("roleName"),
+                description = data.getDato(pos).getStringField("roleDescription")
+            };
             return obj;
         }
     }
