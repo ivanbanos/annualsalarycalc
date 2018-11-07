@@ -5,12 +5,12 @@ using System.Data.SqlClient;
 using System.Text;
 using System.Configuration;
 
-namespace ISicom_BDLocal.DataAccess
+namespace IBDLocal.DataAccess
 {
     public class SQLServerDataBaseConection : IDataConection
     {
         public static SqlConnection conexion = new SqlConnection();
-        public Datos executeRequest(string name, List<Parameter> parameters, string connectionString, int tipoRespuesta)
+        public Data executeRequest(string name, List<Parameter> parameters, string connectionString, int tipoRespuesta)
         {
             lock (conexion) {
                 try
@@ -32,7 +32,7 @@ namespace ISicom_BDLocal.DataAccess
                     conexion.Open();
                     SqlDataReader reader = cmd.ExecuteReader();
 
-                    return DatosBuilder.getDatos(reader);
+                    return DataBuilder.getData(reader);
                 }
                 catch (Exception ex)
                 {

@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using System.Text;
 
 
-namespace ISicom_BDLocal.DataAccess
+namespace IBDLocal.DataAccess
 {
     public class DataAccessFacade
     {
-        public Datos executeRequest(int tipo, string name, List<Parameter> parameters, string connectionString, int tipoRespuesta) {
+        public Data executeRequest(int tipo, string name, List<Parameter> parameters, string connectionString, int tipoRespuesta) {
             switch (tipo) {
                 
                 case 2:

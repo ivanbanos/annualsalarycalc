@@ -7,11 +7,11 @@ using System.Net;
 using System.Text;
 
 
-namespace ISicom_BDLocal.DataAccess
+namespace IBDLocal.DataAccess
 {
     class ApiDataConnection : IDataConection
     {
-        public Datos executeRequest(string name, List<Parameter> parameters, string connectionString, int tipoRespuesta)
+        public Data executeRequest(string name, List<Parameter> parameters, string connectionString, int tipoRespuesta)
         {
             string parametros = "";
             foreach (Parameter p in parameters) {
@@ -55,13 +55,13 @@ namespace ISicom_BDLocal.DataAccess
                 HttpWebResponse response = (HttpWebResponse)http.GetResponse();
                 if (response.StatusCode == HttpStatusCode.OK || response.StatusCode == HttpStatusCode.Created)
                 {
-                    Datos datos = new Datos();
+                    Data Data = new Data();
                     using (StreamReader sr = new StreamReader(response.GetResponseStream()))
                     {
                         string responseJson = sr.ReadToEnd();
 
                         JObject jObj = JObject.Parse(responseJson);
-                        return DatosBuilder.getDatos(jObj);
+                        return DataBuilder.getData(jObj);
                     }
 
                 }
@@ -69,7 +69,7 @@ namespace ISicom_BDLocal.DataAccess
                 {
 
                     JObject jObj = JObject.Parse("{\"estado\":\"" + response.StatusDescription + "\"}");
-                    return DatosBuilder.getDatos(jObj);
+                    return DataBuilder.getData(jObj);
                 }
             }
             catch (Exception e)
@@ -77,7 +77,7 @@ namespace ISicom_BDLocal.DataAccess
 
 
                 JObject jObj = JObject.Parse("{\"estado\":\"error\"}");
-                return DatosBuilder.getDatos(jObj);
+                return DataBuilder.getData(jObj);
             }
         }
     }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 
 
-namespace ISicom_BDLocal.DataAccess
+namespace IBDLocal.DataAccess
 {
     public class Parameter
     {

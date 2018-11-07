@@ -7,32 +7,32 @@ using System.Data.SqlClient;
 using System.Text;
 
 
-namespace ISicom_BDLocal.DataAccess
+namespace IBDLocal.DataAccess
 {
-    public class DatosBuilder
+    public class DataBuilder
     {
-        public static Datos getDatos(object response) {
-            Datos datos = new Datos();
+        public static Data getData(object response) {
+            Data Data = new Data();
             try
             {
                 if (response.GetType().Equals(typeof(JObject)))
                 {
                     
-                        Registro registro = new Registro();
+                        Record record = new Record();
                         foreach (var x in (JObject)response)
                         {
-                            registro.addDato(x.Key, ((JObject)response)[x.Key].ToString());
+                            record.addData(x.Key, ((JObject)response)[x.Key].ToString());
                         }
-                        datos.addDato(registro);
+                        Data.addData(record);
                     
-                    return datos;
+                    return Data;
                 }
                 if (response.GetType().Equals(typeof(string)))
                 {
-                    Registro registro = new Registro();
-                    registro.addDato("respuesta", response);
-                    datos.addDato(registro);
-                    return datos;
+                    Record record = new Record();
+                    record.addData("respuesta", response);
+                    Data.addData(record);
+                    return Data;
                 }
                 if (response.GetType().Equals(typeof(SqlDataReader)))
                 {
@@ -41,18 +41,18 @@ namespace ISicom_BDLocal.DataAccess
 
                     foreach (DataRow row in tabla.Rows)
                     {
-                        Registro registro = new Registro();
+                        Record Record = new Record();
                         foreach (DataColumn column in row.Table.Columns)
                         {
-                            registro.addDato(column.ColumnName, row[column] is DBNull ? "" : row[column]);
+                            Record.addData(column.ColumnName, row[column] is DBNull ? "" : row[column]);
                         }
-                        datos.addDato(registro);
+                        Data.addData(Record);
                     }
-                    return datos;
+                    return Data;
                 }
             }
             catch (Exception) { }
-            return datos;
+            return Data;
 
         }
     }

@@ -4,21 +4,21 @@ using System.Collections.Generic;
 using System.Text;
 
 
-namespace ISicom_BDLocal.DataAccess
+namespace IBDLocal.DataAccess
 {
-    public class Registro
+    public class Record
     {
-        public Registro() {
-            campos = new Dictionary<string, object>();
+        public Record() {
+            fields = new Dictionary<string, object>();
         }
 
-        private Dictionary<string, object> campos;
+        private Dictionary<string, object> fields;
 
-        public bool addDato(string campo, object valor)
+        public bool addData(string Field, object valor)
         {
             try
             {
-                campos.Add(campo, valor);
+                fields.Add(Field, valor);
                 return true;
             }
             catch (Exception) {
@@ -26,9 +26,9 @@ namespace ISicom_BDLocal.DataAccess
             }
         }
 
-        public object getCampo(string campo) {
+        public object getField(string field) {
             try {
-                return campos[campo];
+                return fields[field];
             }
             catch (Exception) {
                 return null;
