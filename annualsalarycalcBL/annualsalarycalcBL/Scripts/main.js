@@ -15,33 +15,34 @@
                 type: "GET",
                 url: url,
                 contentType: 'application/json; charset=utf-8',
-                success: function (data) {
+                success: function (dataJson) {
                     if (id == "") {
 
                         var html = '<table class="dataTable">';
                         html += '<thead><tr>';
                         var flag = 0;
-                        $.each(data[0], function (index, value) {
+                        $.each(dataJson[0], function (index, value) {
                             html += '<th>' + index + '</th>';
                         });
                         html += '</tr></thead>';
                         html += '<tfoot><tr>';
                         var flag = 0;
-                        $.each(data[0], function (index, value) {
+                        $.each(dataJson[0], function (index, value) {
                             html += '<th>' + index + '</th>';
                         });
-                        html += '</tr></tfoot><tbody>';
-                        $.each(data, function (index, value) {
-                            html += '<tr>';
-                            html += '<td>' + value.salary + '</td>';
-                            html += '<td>' + value.id + '</td>';
-                            html += '<td>' + value.name + '</td>';
-                            html += '<td>' + value.role.name + '</td>';
-                            html += '</tr>';
-                        });
-                        html += '</tbody></table>';
+                        html += '</tr></tfoot>';
+                        html += '</table>';
                         $('.data').html(html);
-                        $(".dataTable").DataTable();
+                        console.log(dataJson);
+                        $(".dataTable").DataTable({
+                            "data": dataJson,
+                            "columns": [
+                                { "data": "salary" },
+                                { "data": "id" },
+                                { "data": "name" },
+                                { "data": "role.name" }
+                            ]
+                        });
                     } else {
                         var html = '<ul>';
                          html += '<li><strong>salary</strong>: '+data.salary+'</li>';
