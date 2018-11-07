@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "annualsalarycalcBL", "annualsalarycalcBL\annualsalarycalcBL.csproj", "{1E90D657-4949-47AF-90D7-07A7810E8C1E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "annualsalarycalcApi.Tests", "annualsalarycalc.Tests\annualsalarycalcApi.Tests.csproj", "{BB6ABCC1-62D8-4FA7-9AA6-BB1F8B5FE64C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{1E90D657-4949-47AF-90D7-07A7810E8C1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E90D657-4949-47AF-90D7-07A7810E8C1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1E90D657-4949-47AF-90D7-07A7810E8C1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB6ABCC1-62D8-4FA7-9AA6-BB1F8B5FE64C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB6ABCC1-62D8-4FA7-9AA6-BB1F8B5FE64C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB6ABCC1-62D8-4FA7-9AA6-BB1F8B5FE64C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB6ABCC1-62D8-4FA7-9AA6-BB1F8B5FE64C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

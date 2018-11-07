@@ -198,15 +198,15 @@
     <Compile Include="BussinessLogic\Models\RoleDTO.cs" />
     <Compile Include="Controllers\BussinessLogicComsumer.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
-    <Compile Include="BussinessLogic\DataAccess\ApiDataConnection.cs" />
-    <Compile Include="BussinessLogic\DataAccess\ApiDataConnectionPost.cs" />
-    <Compile Include="BussinessLogic\DataAccess\DataAccessFacade.cs" />
-    <Compile Include="BussinessLogic\DataAccess\Data.cs" />
-    <Compile Include="BussinessLogic\DataAccess\DataBuilder.cs" />
-    <Compile Include="BussinessLogic\DataAccess\IDataConection.cs" />
-    <Compile Include="BussinessLogic\DataAccess\Parameter.cs" />
-    <Compile Include="BussinessLogic\DataAccess\Record.cs" />
-    <Compile Include="BussinessLogic\DataAccess\SQLServerDataBaseConection.cs" />
+    <Compile Include="DataAccess\ApiDataConnection.cs" />
+    <Compile Include="DataAccess\ApiDataConnectionPost.cs" />
+    <Compile Include="DataAccess\DataAccessFacade.cs" />
+    <Compile Include="DataAccess\Data.cs" />
+    <Compile Include="DataAccess\DataBuilder.cs" />
+    <Compile Include="DataAccess\IDataConection.cs" />
+    <Compile Include="DataAccess\Parameter.cs" />
+    <Compile Include="DataAccess\Record.cs" />
+    <Compile Include="DataAccess\SQLServerDataBaseConection.cs" />
     <Compile Include="Controllers\IndexController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
