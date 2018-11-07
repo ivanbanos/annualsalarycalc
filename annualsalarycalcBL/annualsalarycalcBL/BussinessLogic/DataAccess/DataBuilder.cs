@@ -27,6 +27,20 @@ namespace IBDLocal.DataAccess
                     
                     return Data;
                 }
+                if (response.GetType().Equals(typeof(JArray)))
+                {
+                    foreach(JObject jobject in (JArray)response) {
+                        Record record = new Record();
+                        foreach (var x in jobject)
+                        {
+                            record.addData(x.Key, (jobject)[x.Key].ToString());
+                        }
+                        Data.addData(record);
+
+                    }
+
+                    return Data;
+                }
                 if (response.GetType().Equals(typeof(string)))
                 {
                     Record record = new Record();
@@ -51,7 +65,9 @@ namespace IBDLocal.DataAccess
                     return Data;
                 }
             }
-            catch (Exception) { }
+            catch (Exception e) {
+
+            }
             return Data;
 
         }

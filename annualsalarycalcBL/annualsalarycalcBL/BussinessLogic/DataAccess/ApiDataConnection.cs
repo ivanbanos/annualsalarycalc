@@ -11,7 +11,7 @@ namespace IBDLocal.DataAccess
 {
     class ApiDataConnection : IDataConection
     {
-        public Data executeRequest(string name, List<Parameter> parameters, string connectionString, int tipoRespuesta)
+        public Data executeRequest(string name, List<Parameter> parameters, string connectionString)
         {
             string parametros = "";
             foreach (Parameter p in parameters) {
@@ -53,24 +53,23 @@ namespace IBDLocal.DataAccess
             try
             {
                 HttpWebResponse response = (HttpWebResponse)http.GetResponse();
-                if (response.StatusCode == HttpStatusCode.OK || response.StatusCode == HttpStatusCode.Created)
-                {
+                
                     Data Data = new Data();
                     using (StreamReader sr = new StreamReader(response.GetResponseStream()))
                     {
                         string responseJson = sr.ReadToEnd();
-
+                    try
+                    {
                         JObject jObj = JObject.Parse(responseJson);
                         return DataBuilder.getData(jObj);
                     }
+                    catch (Exception) {
+                        JArray jObj = JArray.Parse(responseJson);
+                        return DataBuilder.getData(jObj);
+                    }
+                    }
 
-                }
-                else
-                {
-
-                    JObject jObj = JObject.Parse("{\"estado\":\"" + response.StatusDescription + "\"}");
-                    return DataBuilder.getData(jObj);
-                }
+                
             }
             catch (Exception e)
             {

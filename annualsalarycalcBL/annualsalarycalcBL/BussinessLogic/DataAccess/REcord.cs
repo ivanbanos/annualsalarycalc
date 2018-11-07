@@ -26,13 +26,52 @@ namespace IBDLocal.DataAccess
             }
         }
 
-        public object getField(string field) {
-            try {
+        internal int getIntField(string field)
+        {
+            try
+            {
+                return Int32.Parse((string)fields[field]);
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+        }
+
+        internal float getFloatField(string field)
+        {
+            try
+            {
+                return float.Parse((string)fields[field]);
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+        }
+
+        public object getField(string field)
+        {
+            try
+            {
                 return fields[field];
             }
-            catch (Exception) {
+            catch (Exception)
+            {
                 return null;
             }
         }
+        public string getStringField(string field)
+        {
+            try
+            {
+                return (string)fields[field];
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+        
     }
 }

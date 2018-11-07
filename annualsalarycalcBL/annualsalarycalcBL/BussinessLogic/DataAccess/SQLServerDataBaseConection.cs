@@ -10,7 +10,7 @@ namespace IBDLocal.DataAccess
     public class SQLServerDataBaseConection : IDataConection
     {
         public static SqlConnection conexion = new SqlConnection();
-        public Data executeRequest(string name, List<Parameter> parameters, string connectionString, int tipoRespuesta)
+        public Data executeRequest(string name, List<Parameter> parameters, string connectionString)
         {
             lock (conexion) {
                 try

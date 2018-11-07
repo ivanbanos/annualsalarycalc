@@ -8,9 +8,6 @@ namespace annualsalarycalcBL.BussinessLogic.Models
     public class MonthlySalaryEmployee : EmployeeDTO
     {
 
-        public override float calculateAnnualSalary()
-        {
-            return this.salary * 12;
-        }
+        public new float salary { get { return base.salary * 12; } }
     }
 }

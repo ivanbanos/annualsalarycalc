@@ -13,7 +13,7 @@ namespace IBDLocal.DataAccess
 {
     class ApiDataConnectionPost : IDataConection
     {
-        public Data executeRequest(string name, List<Parameter> parameters, string connectionString, int tipoRespuesta)
+        public Data executeRequest(string name, List<Parameter> parameters, string connectionString)
         {
             string parametros = "";
             foreach (Parameter p in parameters)

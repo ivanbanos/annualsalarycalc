@@ -11,6 +11,5 @@ namespace annualsalarycalcBL.BussinessLogic.Models
         public string name { get; set; }
         public float salary { get; set; }
         public RoleDTO role { get; set; }
-        public abstract float calculateAnnualSalary();
     }
 }
